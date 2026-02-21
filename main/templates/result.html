@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+/* MAIN CONTAINER */
+.result-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+}
+
+/* RESULT CARD */
+.result-card {
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(18px);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    width: 450px;
+    color: white;
+    text-align: center;
+}
+
+/* TITLE */
+.result-card h2 {
+    margin-bottom: 25px;
+}
+
+/* DETAIL BOX */
+.detail {
+    background: rgba(255,255,255,0.15);
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    text-align: left;
+}
+
+/* ICON */
+.icon {
+    margin-right: 8px;
+}
+
+/* VALID / INVALID COLOR */
+.valid {
+    color: #00ff9d;
+    font-weight: bold;
+}
+
+.invalid {
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+/* BUTTON */
+.btn {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* NO DATA */
+.no-data {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+</style>
+
+
+<div class="result-container">
+
+<div class="result-card">
+
+<h2>📱 Phone Number Details</h2>
+
+{% if number %}
+
+<div class="detail">
+<span class="icon">📞</span>
+<b>Number:</b> {{ number }}
+</div>
+
+<div class="detail">
+<span class="icon">🌍</span>
+<b>Country/State:</b> {{ country }}
+</div>
+
+<div class="detail">
+<span class="icon">📡</span>
+<b>Carrier:</b> {{ carrier }}
+</div>
+
+<div class="detail">
+<span class="icon">⏰</span>
+<b>Timezone:</b> {{ timezone }}
+</div>
+
+<div class="detail">
+<span class="icon">✔</span>
+<b>Status:</b> 
+{% if valid %}
+<span class="valid">Valid Number</span>
+{% else %}
+<span class="invalid">Invalid Number</span>
+{% endif %}
+</div>
+
+{% else %}
+
+<div class="no-data">
+❌ No details found
+</div>
+
+{% endif %}
+
+<a href="{% url 'home' %}">
+<button class="btn">
+🔍 Search Another Number
+</button>
+</a>
+
+</div>
+
+</div>
+
+{% endblock %}

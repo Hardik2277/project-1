@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+/* MAIN CONTAINER */
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+    flex-direction: column;
+}
+
+/* ABOUT CARD */
+.about-card {
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(18px);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    width: 600px;
+    color: white;
+    text-align: center;
+}
+
+/* TITLE */
+.about-card h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+/* DESCRIPTION */
+.about-text {
+    font-size: 16px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* FEATURES GRID */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+/* FEATURE ITEM */
+.feature-item {
+    background: rgba(255,255,255,0.15);
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.feature-item:hover {
+    transform: scale(1.05);
+    background: rgba(255,255,255,0.25);
+}
+
+/* FOOTER TEXT */
+.about-footer {
+    margin-top: 25px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width: 650px) {
+
+    .about-card {
+        width: 90%;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+
+<div class="about-container">
+
+<div class="about-card">
+
+<h2>📱 About PhoneInfo</h2>
+
+<p class="about-text">
+PhoneInfo is a powerful web application built using Django and Python.  
+It helps users instantly find important details about any phone number.
+</p>
+
+<div class="features-grid">
+
+<div class="feature-item">
+🌍 Region Detection
+</div>
+
+<div class="feature-item">
+📡 Carrier Information
+</div>
+
+<div class="feature-item">
+⏰ Timezone Identification
+</div>
+
+<div class="feature-item">
+✔ Phone Number Validation
+</div>
+
+</div>
+
+<div class="about-footer">
+Secure • Fast • Reliable • Built with Django
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
