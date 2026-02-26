@@ -197,8 +197,14 @@ footer {
 <div class="nav-links">
 
 <a href="/">Home</a>
-
 <a href="/about/">About</a>
+
+{% if user.is_authenticated %}
+<a href="/logout/">Logout</a>
+{% else %}
+<a href="/login/">Login</a>
+<a href="/signup/">Sign Up</a>
+{% endif %}
 
 </div>
 
