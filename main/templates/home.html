@@ -4,69 +4,73 @@
 
 <style>
 
-/* SEARCH CARD CONTAINER */
+/* ---------------- MAIN SEARCH CARD ---------------- */
+
 .main-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 75vh;
+    min-height: 80vh;
 }
 
-/* PREMIUM CARD */
 .card {
-    background: rgba(255,255,255,0.18);
-    backdrop-filter: blur(18px);
-    padding: 45px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(20px);
+    padding: 50px;
     border-radius: 25px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-    width: 460px;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.4);
+    width: 480px;
     text-align: center;
     color: white;
-    transition: 0.4s;
+    transition: 0.4s ease;
 }
 
 .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
 }
 
-/* TITLE */
 .card h2 {
-    font-size: 28px;
+    font-size: 30px;
     margin-bottom: 10px;
 }
 
-/* SUBTITLE */
 .subtitle {
     font-size: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
+    opacity: 0.9;
 }
 
-/* INPUT GROUP */
+/* INPUT */
+
 .input-group {
     position: relative;
 }
 
-/* INPUT BOX */
 .input-box {
     width: 100%;
-    padding: 14px 50px 14px 20px;
+    padding: 16px 55px 16px 20px;
     border-radius: 50px;
     border: none;
     font-size: 16px;
     outline: none;
+    transition: 0.3s;
 }
 
-/* PHONE ICON */
+.input-box:focus {
+    box-shadow: 0 0 15px rgba(255,255,255,0.8);
+}
+
 .phone-icon {
     position: absolute;
-    right: 18px;
-    top: 14px;
+    right: 20px;
+    top: 16px;
 }
 
 /* BUTTON */
+
 .btn {
     width: 100%;
-    padding: 14px;
+    padding: 16px;
     border-radius: 50px;
     border: none;
     background: linear-gradient(90deg, #ff8a00, #e52e71);
@@ -74,59 +78,101 @@
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 25px;
+    transition: 0.3s;
 }
 
 .btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.06);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-/* FEATURES SECTION */
+/* ---------------- SECTION TITLES ---------------- */
 
-.features {
-    margin-top: 60px;
+.section-title {
     text-align: center;
+    font-size: 32px;
+    margin: 90px 0 50px;
     color: white;
 }
 
-.features h2 {
-    margin-bottom: 30px;
-}
+/* ---------------- FEATURES ---------------- */
 
 .feature-boxes {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 35px;
     flex-wrap: wrap;
+    padding: 0 20px;
 }
 
 .feature {
-    background: rgba(255,255,255,0.18);
-    padding: 20px;
-    border-radius: 15px;
-    width: 200px;
-}
-
-/* HOW IT WORKS */
-
-.how {
-    margin-top: 60px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 20px;
+    width: 240px;
     text-align: center;
     color: white;
+    transition: 0.4s;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
 }
+
+.feature:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+}
+
+.feature-icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+/* ---------------- HOW IT WORKS ---------------- */
 
 .steps {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 35px;
     flex-wrap: wrap;
+    padding: 0 20px;
 }
 
 .step {
-    background: rgba(255,255,255,0.18);
-    padding: 20px;
-    border-radius: 15px;
-    width: 200px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 20px;
+    width: 240px;
+    text-align: center;
+    color: white;
+    transition: 0.4s;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+.step:hover {
+    transform: translateY(-12px);
+}
+
+.step-number {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media(max-width: 600px){
+
+    .card {
+        width: 90%;
+        padding: 30px;
+    }
+
+    .feature, .step {
+        width: 90%;
+    }
+
 }
 
 </style>
@@ -141,7 +187,7 @@
         <h2>📱 Phone Number Info</h2>
 
         <p class="subtitle">
-            Enter phone number to get instant details
+            Discover carrier, region and timezone instantly
         </p>
 
         <form method="POST" action="{% url 'result' %}">
@@ -173,99 +219,7 @@
 </div>
 
 
-<style>
-
-/* SECTION TITLE */
-.section-title {
-    font-size: 28px;
-    margin-bottom: 35px;
-    text-align: center;
-    color: white;
-}
-
-/* FEATURES SECTION */
-
-.features {
-    margin-top: 80px;
-    padding: 20px;
-}
-
-.feature-boxes {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.feature {
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(10px);
-    padding: 25px;
-    border-radius: 18px;
-    width: 230px;
-    text-align: center;
-    color: white;
-    transition: 0.3s;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.feature:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
-
-.feature-icon {
-    font-size: 40px;
-    margin-bottom: 10px;
-}
-
-.feature h3 {
-    margin-bottom: 10px;
-}
-
-
-/* HOW IT WORKS */
-
-.how {
-    margin-top: 90px;
-    padding: 20px;
-}
-
-.steps {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.step {
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(10px);
-    padding: 25px;
-    border-radius: 18px;
-    width: 230px;
-    text-align: center;
-    color: white;
-    transition: 0.3s;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.step:hover {
-    transform: translateY(-10px);
-}
-
-.step-number {
-    font-size: 35px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-</style>
-
-
-<!-- FEATURES SECTION -->
-
-<div class="features">
+<!-- FEATURES -->
 
 <h2 class="section-title">✨ Powerful Features</h2>
 
@@ -274,35 +228,31 @@
 <div class="feature">
 <div class="feature-icon">🌍</div>
 <h3>Region Detection</h3>
-<p>Instantly identify country and state from phone number</p>
+<p>Identify country and state instantly</p>
 </div>
 
 <div class="feature">
 <div class="feature-icon">📡</div>
 <h3>Carrier Info</h3>
-<p>Find mobile network provider like Airtel, Jio, VI</p>
+<p>Detect mobile network provider</p>
 </div>
 
 <div class="feature">
 <div class="feature-icon">⏰</div>
 <h3>Timezone Info</h3>
-<p>Get accurate timezone information</p>
+<p>Get accurate timezone details</p>
 </div>
 
 <div class="feature">
 <div class="feature-icon">✔</div>
 <h3>Validation</h3>
-<p>Check if phone number is valid or invalid</p>
+<p>Verify phone number authenticity</p>
 </div>
 
 </div>
 
-</div>
 
-
-<!-- HOW IT WORKS SECTION -->
-
-<div class="how">
+<!-- HOW IT WORKS -->
 
 <h2 class="section-title">⚙ How It Works</h2>
 
@@ -311,21 +261,19 @@
 <div class="step">
 <div class="step-number">1</div>
 <h3>Enter Number</h3>
-<p>Enter phone number with country code</p>
+<p>Type phone number with country code</p>
 </div>
 
 <div class="step">
 <div class="step-number">2</div>
-<h3>Process</h3>
-<p>Our system analyzes the phone number instantly</p>
+<h3>Analyze</h3>
+<p>System processes the number instantly</p>
 </div>
 
 <div class="step">
 <div class="step-number">3</div>
-<h3>View Details</h3>
-<p>See carrier, region and timezone information</p>
-</div>
-
+<h3>View Results</h3>
+<p>See carrier, region and timezone</p>
 </div>
 
 </div>
