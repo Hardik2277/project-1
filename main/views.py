@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+from .models import Contact
+
 
 # HOME PAGE
 def home(request):
@@ -140,3 +142,23 @@ def logout_view(request):
 def profile_view(request):
 
     return render(request, 'profile.html')
+
+def contact_view(request):
+
+    if request.method == "POST":
+
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        Contact.objects.create(
+            name=name,
+            email=email,
+            message=message
+        )
+
+        return render(request, 'contact.html', {
+            'success': 'Message sent successfully!'
+        })
+
+    return render(request, 'contact.html')
