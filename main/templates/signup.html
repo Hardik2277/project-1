@@ -2,32 +2,110 @@
 
 {% block content %}
 
-<div style="display:flex;justify-content:center;align-items:center;min-height:70vh;">
+<style>
 
-<div style="background:rgba(255,255,255,0.15);padding:40px;border-radius:20px;width:400px;color:white;">
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
 
-<h2>Sign Up</h2>
+.auth-card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(20px);
+    padding: 45px;
+    border-radius: 25px;
+    width: 420px;
+    color: white;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+    text-align: center;
+    transition: 0.4s;
+}
 
-<form method="POST">
-{% csrf_token %}
+.auth-card:hover {
+    transform: translateY(-8px);
+}
 
-<input type="text" name="username" placeholder="Username" required style="width:100%;padding:10px;margin:10px 0;border-radius:10px;border:none;">
+.auth-card h2 {
+    margin-bottom: 30px;
+}
 
-<input type="email" name="email" placeholder="Email" required style="width:100%;padding:10px;margin:10px 0;border-radius:10px;border:none;">
+.input-field {
+    width: 100%;
+    padding: 14px 18px;
+    margin: 12px 0;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
 
-<input type="password" name="password" placeholder="Password" required style="width:100%;padding:10px;margin:10px 0;border-radius:10px;border:none;">
+.auth-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s;
+}
 
-<button type="submit" style="width:100%;padding:10px;border:none;border-radius:10px;background:orange;color:white;font-weight:bold;">
-Create Account
-</button>
+.auth-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
 
-{% if error %}
-<p style="color:red;">{{ error }}</p>
-{% endif %}
+.switch-link {
+    margin-top: 20px;
+    font-size: 14px;
+}
 
-</form>
+.switch-link a {
+    color: #ffd700;
+    text-decoration: none;
+}
 
-</div>
+.error {
+    color: #ff4d4d;
+    margin-top: 10px;
+}
+
+</style>
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <h2>✨ Create Account</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <input type="text" name="username" placeholder="Username" class="input-field" required>
+
+            <input type="email" name="email" placeholder="Email Address" class="input-field" required>
+
+            <input type="password" name="password" placeholder="Password" class="input-field" required>
+
+            <button type="submit" class="auth-btn">
+                Sign Up
+            </button>
+
+            {% if error %}
+            <p class="error">{{ error }}</p>
+            {% endif %}
+        </form>
+
+        <div class="switch-link">
+            Already have an account?
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+
+    </div>
 
 </div>
 
