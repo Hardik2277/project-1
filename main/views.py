@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-from .models import Contact
+from .models import Contact, Profile
 
 
 # HOME PAGE
@@ -141,7 +141,23 @@ def logout_view(request):
 @login_required
 def profile_view(request):
 
-    return render(request, 'profile.html')
+    # Get or create profile for user
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
+    # If user uploads image
+    if request.method == "POST":
+
+        if request.FILES.get('image'):
+
+            profile.image = request.FILES['image']
+            profile.save()
+
+            return redirect('profile')
+
+    # Send profile to template
+    return render(request, 'profile.html', {
+        'profile': profile
+    })
 
 def contact_view(request):
 
