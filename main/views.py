@@ -137,14 +137,12 @@ def logout_view(request):
     return redirect('home')
 
 
-# PROFILE PAGE (NEW)
+# PROFILE PAGE
 @login_required
 def profile_view(request):
 
-    # Get or create profile for user
     profile, created = Profile.objects.get_or_create(user=request.user)
 
-    # If user uploads image
     if request.method == "POST":
 
         if request.FILES.get('image'):
@@ -154,10 +152,24 @@ def profile_view(request):
 
             return redirect('profile')
 
-    # Send profile to template
     return render(request, 'profile.html', {
         'profile': profile
     })
+    
+@login_required
+def delete_account(request):
+
+    if request.method == "POST":
+
+        user = request.user
+
+        logout(request)
+
+        user.delete()
+
+        return redirect('home')
+
+    return redirect('profile')
 
 def contact_view(request):
 

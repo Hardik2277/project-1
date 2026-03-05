@@ -127,6 +127,26 @@ input[type="file"] {
     transform: scale(1.05);
 }
 
+.btn-delete{
+
+    margin-top:15px;
+    padding:10px 25px;
+    border-radius:50px;
+    border:none;
+    background: linear-gradient(90deg,#ff0000,#b30000);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+
+}
+
+.btn-delete:hover{
+
+    transform:scale(1.05);
+
+}
+
 /* RESPONSIVE */
 
 @media(max-width:600px){
@@ -191,6 +211,17 @@ Upload Picture
 <a href="{% url 'logout' %}" class="btn-logout">
 Logout
 </a>
+</form>
+
+<form method="POST" action="{% url 'delete_account' %}" 
+onsubmit="return confirm('Are you sure you want to delete your account?')">
+
+{% csrf_token %}
+
+<button type="submit" class="btn-delete">
+Delete Account
+</button>
+
 </form>
 
 </div>

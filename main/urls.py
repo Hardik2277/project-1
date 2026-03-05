@@ -22,6 +22,8 @@ urlpatterns = [
     path('profile/', views.profile_view, name='profile'),
 
     path('contact/', views.contact_view, name='contact'),
+    
+    path('delete-account/', views.delete_account, name='delete_account'),
 
 ]
 
